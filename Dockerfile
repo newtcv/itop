@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine
+FROM gliderlabs/alpine:3.3
 MAINTAINER newtcv - https://github.com/newtcv
 
 RUN apk --update add php-apache2 curl php-cli php-json php-ldap php-phar php-openssl php-mysql php-mysqli php-mcrypt php-soap graphviz && rm -f /var/cache/apk/* && \
