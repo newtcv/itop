@@ -1,9 +1,16 @@
-FROM alpine:edge
-MAINTAINER NewTcV | https://github.com/newtcv
+FROM alpine:3.7
+MAINTAINER NewTcV | https://github.com/newtcv 
 
-# Add repos
-#RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN echo 'http://alpine.gliderlabs.com/alpine/edge/community' >> /etc/apk/repositories
+# trust this project public key to trust the packages.
+ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+
+## you may join the multiple run lines here to make it a single layer
+
+# make sure you can use HTTPS
+RUN apk --update add ca-certificates
+
+# add the repository, make sure you replace the correct versions if you want.
+RUN echo "@php https://php.codecasts.rocks/v3.7/php-7.1" >> /etc/apk/repositories
 
 # Add basics first
 RUN apk update && apk upgrade && apk add \
