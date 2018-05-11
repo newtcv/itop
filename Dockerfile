@@ -1,5 +1,5 @@
 FROM alpine:edge
-MAINTAINER Paul Smith <pa.ulsmith.net>
+MAINTAINER NewTcV | https://github.com/newtcv
 
 # Add repos
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
