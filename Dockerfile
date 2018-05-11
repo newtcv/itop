@@ -39,6 +39,7 @@ RUN apk add \
 	php7-bz2 \
 	php7-pdo_dblib \
 	php7-curl \
+	php7-ldap \
 	php7-ctype \
 	php7-session \
 	php7-redis \
@@ -59,13 +60,16 @@ RUN mkdir /run/apache2 \
     && sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf \
     && sed -i "s#^DocumentRoot \".*#DocumentRoot \"/app/public\"#g" /etc/apache2/httpd.conf \
     && sed -i "s#/var/www/localhost/htdocs#/app/public#" /etc/apache2/httpd.conf \
+    && sed -i "s/;session.save_path/session.save_path/g" /etc/php7/php.ini \
     && printf "\n<Directory \"/app/public\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
 
 RUN mkdir /app && mkdir /app/public && chown -R apache:apache /app && chmod -R 755 /app && mkdir bootstrap
 RUN mkdir /tmp/itop
 RUN curl -k -L  https://sourceforge.net/projects/itop/files/latest/download > /tmp/itop/itop.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
-RUN cp -r /tmp/itop/web/* /app/public && rm -rf /tmp/itop
+RUN cp -r /tmp/itop/web/* /app/public && rm -rf /tmp/itop && chown -R apache:apache /app
+RUN chmod -R a+w /app/public/log && chmod -R a+w /app/public/data
+
 ADD start.sh /bootstrap/
 RUN chmod +x /bootstrap/start.sh
 
