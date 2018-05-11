@@ -43,7 +43,8 @@ RUN apk add \
 	php7-ctype \
 	php7-session \
 	php7-redis \
-	php7-exif
+	php7-exif \
+	graphviz
 
 # Problems installing in above stack
 RUN apk add php7-simplexml
