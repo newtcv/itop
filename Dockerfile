@@ -63,7 +63,7 @@ RUN mkdir /run/apache2 \
 
 RUN mkdir /app && mkdir /app/public && chown -R apache:apache /app && chmod -R 755 /app && mkdir bootstrap
 RUN mkdir /tmp/itop
-RUN curl -k https://downloads.sourceforge.net/project/itop/itop/2.4.0/iTop-2.4.0-3585.zip --output /tmp/itop/itop.zip
+RUN curl -k -L  https://sourceforge.net/projects/itop/files/latest/download > /tmp/itop/itop.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN cp -r /tmp/itop/web/* /app/public && rm -rf /tmp/itop
 ADD start.sh /bootstrap/
