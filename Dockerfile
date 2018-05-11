@@ -2,7 +2,8 @@ FROM alpine:edge
 MAINTAINER NewTcV | https://github.com/newtcv
 
 # Add repos
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+#RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN echo 'http://alpine.gliderlabs.com/alpine/edge/community' >> /etc/apk/repositories
 
 # Add basics first
 RUN apk update && apk upgrade && apk add \
