@@ -11,9 +11,11 @@ do
 done
 
 # set apache as owner/group
-if [ "$FIX_OWNERSHIP" != "" ]; then
-	chown -R apache:apache /app
-fi
+
+chown -R apache:apache /app
+mkdir -p /var/log/apache2
+chown -R apache:apache /var/log/apache2 
+
 
 # display logs
 tail -F /var/log/apache2/*log &
