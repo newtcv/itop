@@ -1,15 +1,15 @@
-# Alpine LAP Server with Extensions
+# Alpine Itop
 
-Provides a basic LAP stack using Alpine, Apache2 and PHP7, loading in the various extensions along the way (see Dockerfile for full list).
+Provides a basic install using Alpine, Apache2 and PHP7, loading in the various extensions along the way (see Dockerfile for full list).
 
-Should allow you to get going with a full LAP stack and support for DB via linked container (such as mysql) with ease, allowing you to fine tune various aspects of the server and php via environment variables.
+Should allow you to get going with a full ITOP stack and support for DB via linked container (such as mysql) with ease, allowing you to fine tune various aspects of the server and php via environment variables.
 
 
 ## Included in this image
 
 bash, apache2, php7, php7-apache2, curl, ca-certificates, git
 
-php7-phar, php7-mcrypt, php7-soap, php7-openssl, php7-gmp, php7-pdo_odbc, php7-json, php7-dom, php7-pdo, php7-zip, php7-mysqli, php7-sqlite3, php7-pdo_pgsql, php7-bcmath, php7-gd, php7-odbc, php7-pdo_mysql, php7-pdo_sqlite, php7-gettext, php7-xmlreader, php7-xmlrpc, php7-bz2, php7-iconv, php7-pdo_dblib, php7-curl, php7-ctype, php7-session, php7-redis.
+php7-phar, php7-mcrypt, php7-soap, php7-openssl, php7-gmp, php7-pdo_odbc, php7-json, php7-dom, php7-pdo, php7-zip, php7-mysqli, php7-sqlite3, php7-pdo_pgsql, php7-bcmath, php7-gd, php7-odbc, php7-pdo_mysql, php7-pdo_sqlite, php7-gettext, php7-xmlreader, php7-xmlrpc, php7-bz2, php7-iconv, php7-pdo_dblib, php7-curl, php7-ctype, php7-session, php7-redis, graphviz.
 
 
 ## Environment Variables
@@ -139,19 +139,3 @@ Then run...
 ```bash
 docker-compose up -d
 ```
-
-This will patch the container through to traefik load balancer running from another dc file.
-
-If you would like to add to this, expand on this, maybe you don't want to map your volume and want to copy files for a production system. You can create your own Dockerfile based on this image...
-
-```
-FROM ulsmith/alpine-apache-php7
-MAINTAINER You <you@youremail.com>
-
-ADD /public /app/public
-RUN chown -R apache:apache /app
-```
-
-## Where Do I Put My Files
-
-Hmmm... you can place them in the /app folder, your application should be placed in the /app folder with public access being pushed through to /app/public. This alloows you to have your src files and other outside the public directory.
