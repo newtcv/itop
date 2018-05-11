@@ -98,6 +98,8 @@ __PHP_SESSION_COOKIE_HTTPONLY:__ Maps to php.ini 'session.cookie_httponly'
 
 __PHP_XDEBUG_ENABLED:__ Add this env and give it a value to turn it on, such as true, or On or Awesome, or beer, or socks... Turns on xdebug (which is not for production really)
 
+__MYSQL_HOST:__ Set mysql Host
+
 
 ## Usage
 
