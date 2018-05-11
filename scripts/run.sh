@@ -15,6 +15,9 @@ done
 chown -R apache:apache /app
 mkdir -p /var/log/apache2
 chown -R apache:apache /var/log/apache2 
+mkdir -p /run/apache2
+chown -R apache:apache /run/apache2
+
 
 
 # display logs
