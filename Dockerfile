@@ -62,6 +62,7 @@ RUN mkdir /run/apache2 \
     && printf "\n<Directory \"/app/public\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
 
 RUN mkdir /app && mkdir /app/public && chown -R apache:apache /app && chmod -R 755 /app && mkdir bootstrap
+RUN mkdir /tmp/itop
 RUN curl -k https://downloads.sourceforge.net/project/itop/itop/2.4.0/iTop-2.4.0-3585.zip --output /tmp/itop/itop.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN cp -r /tmp/itop/web/* /app/public && rm -rf /tmp/itop
