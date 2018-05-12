@@ -75,7 +75,7 @@ if [ ! -z "$PHP_XDEBUG_ENABLED" ]
 fi
 
 
-DIR="/app/public/log"
+DIR="/var/www/localhost/htdocs"
 
 if [ $# -ne 1 ]
 then
