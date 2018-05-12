@@ -83,11 +83,11 @@ then
 	unzip /tmp/itop/itop.zip -d /tmp/itop/
 	curl -k -L  https://sourceforge.net/projects/itop/files/latest/download > /tmp/itop/itop.zip
 	unzip /tmp/itop/itop.zip -d /tmp/itop
-	cp -r /tmp/itop/web/* /app/public 
+	cp -r /tmp/itop/web/* /var/www/localhost/htdocs 
 	rm -rf /tmp/itop
-	chown -R apache:apache /app
-	chmod -R a+w /app/public/log
-	chmod -R a+w /app/public/data
+	chown -R apache:apache /var/www/localhost/htdocs
+	chmod -R a+w /var/www/localhost/htdocs/log
+	chmod -R a+w /var/www/localhost/htdocs/data
 fi
 
 
