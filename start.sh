@@ -74,6 +74,23 @@ if [ ! -z "$PHP_XDEBUG_ENABLED" ]
 		echo 'xdebug.remote_autostart=true' >> /etc/php7/php.ini;
 fi
 
+
+DIR="/app/public/log"
+
+if [ $# -ne 1 ]
+then
+	mkdir /tmp/itop
+	unzip /tmp/itop/itop.zip -d /tmp/itop/
+	curl -k -L  https://sourceforge.net/projects/itop/files/latest/download > /tmp/itop/itop.zip
+	unzip /tmp/itop/itop.zip -d /tmp/itop
+	cp -r /tmp/itop/web/* /app/public 
+	rm -rf /tmp/itop
+	chown -R apache:apache /app
+	chmod -R a+w /app/public/log
+	chmod -R a+w /app/public/data
+fi
+
+
 # Start (ensure apache2 PID not left behind first) to stop auto start crashes if didn't shut down properly
 
 echo "Clearing any old processes..."
