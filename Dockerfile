@@ -73,6 +73,7 @@ RUN mkdir /run/apache2 \
     && sed -i "s/;session.save_path/session.save_path/g" /etc/php7/php.ini \
     && printf "\n<Directory \"/app/public\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
 
+RUN rm -rf /var/www/localhost/htdocs/
 RUN ln -s /var/www/localhost/htdocs/ /app
 RUN mkdir /app/public && chown -R apache:apache /app && chmod -R 755 /app && mkdir bootstrap
 
